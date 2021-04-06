@@ -17,5 +17,15 @@ const Workout = new Schema({
     
   }]
 })
+Workout.set('toObject', { virtuals: true })
+Workout.set('toJSON', { virtuals: true })
+Workout.virtual('duration')
+  .get(function () {
+    let totalDuration = 0
+    this.exercises.forEach(exercise => {
+      totalDuration += exercise.duration
+    })
+    return totalDuration
+  })
 
 module.exports = model('Workout', Workout)
