@@ -7,9 +7,15 @@ router.get('/workout', (req,res) => {
     .catch(err => console.log(err))
 })
 
+router.get('/workouts/range', (req,res) => {
+  Workout.find().limit(7)
+    .then(workout => res.json(workout))
+    .catch(err => console.log(err))
+})
+
 router.get('/workouts', (req,res) => {
   Workout.find()
-    .then(workouts => res.json(workouts))
+    .then(workout => res.json(workout))
     .catch(err => console.log(err))
 })
 
@@ -25,4 +31,10 @@ router.put('/workouts/:id', (req,res) => {
     .catch(err => console.log(err))
 })
 
-router.delete('/workout/:id')
+router.delete('/workout/:id', (req,res) => {
+  Workout.findByIdAndDelete(req.params.id)
+    .then(workout => res.json(workout))
+    .catch(err => console.log(err))
+})
+
+module.exports = router
