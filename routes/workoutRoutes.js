@@ -19,9 +19,9 @@ router.get('/workouts', (req,res) => {
     .catch(err => console.log(err))
 })
 
-router.post('/workout', (req,res) => {
-  Workout.create(req.body)
-    .then(() => res.sendStatus(200))
+router.post('/workouts', (req,res) => {
+  Workout.create({})
+    .then(workout => res.json(workout))
     .catch(err => console.log(err))
 })
 
@@ -31,7 +31,7 @@ router.put('/workouts/:id', (req,res) => {
     .catch(err => console.log(err))
 })
 
-router.delete('/workout/:id', (req,res) => {
+router.delete('/workouts/:id', (req,res) => {
   Workout.findByIdAndDelete(req.params.id)
     .then(workout => res.json(workout))
     .catch(err => console.log(err))

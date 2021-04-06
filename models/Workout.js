@@ -1,31 +1,19 @@
 const { model, Schema } = require('mongoose')
 
 const Workout = new Schema({
-  day: {
-    type: Date
-  },
+  day: Date,
   exercises: [{
     type: {
       type: String
     },
     name: {
-    type: String
-    },
-    duration: {
-    type: Number
-    },
-    weight: {
-    type: Number
-    },
-    reps: {
-    type: Number
-    },
-    sets: {
-    type: Number
-    },
-    distance: {
-      type: Number
-    }
+      type: String
+    }, 
+    duration: Number,
+    weight: Number,
+    reps: Number,
+    sets: Number,
+    distance: Number
     
   }]
 })
