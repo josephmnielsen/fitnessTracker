@@ -19,7 +19,7 @@ const Workout = new Schema({
 })
 Workout.set('toObject', { virtuals: true })
 Workout.set('toJSON', { virtuals: true })
-Workout.virtual('duration')
+Workout.virtual('totalDuration')
   .get(function () {
     let totalDuration = 0
     this.exercises.forEach(exercise => {
